@@ -5,6 +5,7 @@ function CountryInfo({data, maxarea, detailed}){
     let ratio = (area / maxarea.area) * 300 + "%";
     //console.log(area);
     let style1= "right:" + ratio;
+    console.log(name.common)
     console.log(detailed)
     
     return(
@@ -14,7 +15,7 @@ function CountryInfo({data, maxarea, detailed}){
         <div className = "area">{area} km<sup>2</sup></div>
         <div className ="bar" style = {{width : ratio}}>
         </div>
-        {region ? "false" : "true"}
+        {region ? "true" : "false"}
     </div>
     )
   }

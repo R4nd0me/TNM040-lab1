@@ -9,13 +9,27 @@ function App() {
   let sortedCountries = countries.sort((a,b) => b.area - a.area);
   let filterQuery = "Antarctica";
   let filteredCountries = sortedCountries.filter((a) => a.name.common != filterQuery).slice(0,15);
-
-  
-
+  let detailedCountries = filteredCountries.slice(0,5);
+  let minimalCountries = filteredCountries.slice(5,15);
   return (
+    <div className = "Container"> 
+    <div className = "detailed">
+    {detailedCountries.map((x) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {true}/>))}
+    </div>
+    
+    <div className ="minimal">
+    {minimalCountries.map((x) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {false}/>))}
+    </div>
+    
+      </div>
+  );
+
+ /* return (
     array1.map((x) => <CountryInfo data = {x} key = {x.cca3} maxarea = {array1[0]} detailed = {false}/>)
   )
+    */
 }
+/*
 let array1 = countries;
 
 array1.sort((a,b) => b.area - a.area);
@@ -25,5 +39,6 @@ let array2 = array1.slice(0,5);
 let array3 = array1.slice(5,15);
 console.log(array3);
 console.log(array2);
+*/
 
 export default App
