@@ -1,21 +1,29 @@
 
 function CountryInfo({data, maxarea, detailed}){
-    const {name, area, cca3, region} = data;
+    const {name, area, cca3} = data;
     let bc = "blue";
     let ratio = (area / maxarea.area) * 300 + "%";
     //console.log(area);
-    let style1= "right:" + ratio;
-    console.log(name.common)
-    console.log(detailed)
+    let region = data.region;
+    let capital = data.capital;
+    console.log(data);
+    console.log(detailed);
     
     return(
-      <div className = "Container">
-      <a className = "CountryName" id ={cca3}>{name.common}</a> 
-        <div className = "region">{region}</div>
-        <div className = "area">{area} km<sup>2</sup></div>
-        <div className ="bar" style = {{width : ratio}}>
+    <div className = {cca3}>
+      <a className = "CountryName" id ={cca3}>{name.common}
+      </a>
+
+
+      {detailed ? <div className = "region">Region: {region}</div> : <></>}
+
+      <div className = "capital">{detailed ? "Capital: " + capital: ""}
         </div>
-        {region ? "true" : "false"}
+      <div className = "area">{area} km<sup>2</sup>
+      </div>
+      <div className ="bar" style = {{width : ratio}}>
+      </div>
+
     </div>
     )
   }

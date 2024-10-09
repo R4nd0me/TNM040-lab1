@@ -9,16 +9,13 @@ function App() {
   let sortedCountries = countries.sort((a,b) => b.area - a.area);
   let filterQuery = "Antarctica";
   let filteredCountries = sortedCountries.filter((a) => a.name.common != filterQuery).slice(0,15);
-  let detailedCountries = filteredCountries.slice(0,5);
+ /* let detailedCountries = filteredCountries.slice(0,5); 
   let minimalCountries = filteredCountries.slice(5,15);
+*/
   return (
     <div className = "Container"> 
-    <div className = "detailed">
-    {detailedCountries.map((x) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {true}/>))}
-    </div>
-    
-    <div className ="minimal">
-    {minimalCountries.map((x) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {false}/>))}
+    <div className = "Country">
+    {filteredCountries.map((x, index) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {index < 5}/>))}
     </div>
     
       </div>
