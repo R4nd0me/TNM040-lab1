@@ -14,11 +14,10 @@ function App() {
 */
   return (
     <div className = "Container"> 
-    <div className = "Country">
-    {filteredCountries.map((x, index) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {index < 5}/>))}
-    </div>
-    
+      <div className = "Country">
+      {filteredCountries.map((x, index) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {index < 5}/>))}
       </div>
+    </div>
   );
 
  /* return (
@@ -37,5 +36,4 @@ let array3 = array1.slice(5,15);
 console.log(array3);
 console.log(array2);
 */
-
 export default App

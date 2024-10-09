@@ -1,41 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import countries from 'world-countries';
-import CountryInfo from './CountryInfo.jsx';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import CountryList from "./CountryList.jsx";
+import CountryDetails from "./CountryDetails.jsx";
 
-function App() {
-  let sortedCountries = countries.sort((a,b) => b.area - a.area);
-  let filterQuery = "Antarctica";
-  let filteredCountries = sortedCountries.filter((a) => a.name.common != filterQuery).slice(0,15);
- /* let detailedCountries = filteredCountries.slice(0,5); 
-  let minimalCountries = filteredCountries.slice(5,15);
-*/
-  return (
-    <div className = "Container"> 
-    <div className = "Country">
-    {filteredCountries.map((x, index) => (<CountryInfo data = {x} key = {x.cca3} maxarea={filteredCountries[0]} detailed = {index < 5}/>))}
-    </div>
-    
-      </div>
+export default function App(){
+
+  return(
+    <BrowserRouter>
+    <Routes>
+      <Route path = "/">
+        <Route index element ={<CountryList/>}/>
+        <Route path = "country" element = {<p>Hello World</p>}>
+
+        </Route>
+        <Route path = "/country/:countryId" element ={<CountryDetails/>}>
+        </Route>
+      </Route>
+    </Routes>
+    </BrowserRouter>
   );
-
- /* return (
-    array1.map((x) => <CountryInfo data = {x} key = {x.cca3} maxarea = {array1[0]} detailed = {false}/>)
-  )
-    */
 }
-/*
-let array1 = countries;
-
-array1.sort((a,b) => b.area - a.area);
-array1 = array1.filter((a) => a.name.common != "Antarctica").slice(0,15);
-
-let array2 = array1.slice(0,5);
-let array3 = array1.slice(5,15);
-console.log(array3);
-console.log(array2);
-*/
-
-export default App

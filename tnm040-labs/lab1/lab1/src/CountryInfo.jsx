@@ -13,8 +13,6 @@ function CountryInfo({data, maxarea, detailed}){
     <div className = {cca3}>
       <a className = "CountryName" id ={cca3}>{name.common}
       </a>
-
-
       {detailed ? <div className = "region">Region: {region}</div> : <></>}
 
       <div className = "capital">{detailed ? "Capital: " + capital: ""}
